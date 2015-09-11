@@ -5,4 +5,7 @@
 
 cp vimrc ../.vimrc
 
-mkdir -f tmp
+mkdir tmp
+
+git submodule init
+git submodule update
