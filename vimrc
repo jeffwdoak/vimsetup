@@ -23,9 +23,9 @@ set incsearch		" do incremental searching
 set hlsearch
 
 " Put temporary and backup files in the .vim directory 
-set backupdir=/home/jdoak/.vim/tmp
-set directory=/home/jdoak/.vim/tmp
-set undodir=/home/jdoak/.vim/tmp
+set backupdir=/home/xxxx/.vim/tmp
+set directory=/home/xxxx/.vim/tmp
+set undodir=/home/xxxx/.vim/tmp
 
 " set code folding "
 set foldmethod=indent
