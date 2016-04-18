@@ -249,7 +249,7 @@ user_color
 
 # PS1 set up
 PROMPT_COMMAND='settitle; git_branch;'
-export PS1='\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]${gitbranch}\[\e${cwdcolor}\][\W]\[\e${inputcolor}\] $ '
+export PS1="\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]${gitbranch}\[\e${cwdcolor}\][\W]\[\e${inputcolor}\] $ "
 
 alias ls="ls --color"
 alias vi='vim'
