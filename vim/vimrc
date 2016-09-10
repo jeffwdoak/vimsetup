@@ -44,9 +44,9 @@ augroup resCur
 augroup END
 
 " Put temporary and backup files in the .vim directory 
-set backupdir=/home/xxxx/.vim/tmp
-set directory=/home/xxxx/.vim/tmp
-set undodir=/home/xxxx/.vim/tmp
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
+set undodir=~/.vim/tmp
 
 " set code folding "
 set foldmethod=indent
