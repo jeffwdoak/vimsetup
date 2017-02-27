@@ -1,85 +1,77 @@
-" set up Pathogen first
-filetype off
-execute pathogen#infect()
-call pathogen#helptags()
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off 
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Set runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
-endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set hlsearch
+" Let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
 
-" Tell viminfo to remember things when we exit
-" '10  : marks will be remembered for up to 10 previously edited files
-" "100 : will save up to 100 lines for each register
-" :20  : up to 20 lines of command-line history will be remembered
-" %    : saves and restores the buffer list
-" n... : where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
 
-" Function to go to the last cursor location when I open a file
-function! ResCur()
-	if line("'\"") <= line("$")
-		normal! g`"
-		return 1
-	endif
-endfunction
+" Start list of plugins I want Vundle to manage
 
-augroup resCur
-	autocmd!
-	autocmd BufWinEnter * call ResCur()
-augroup END
+Plugin 'tpope/vim-fugitive'
 
-" Put temporary and backup files in the .vim directory 
-set backupdir=~/.vim/tmp
-set directory=~/.vim/tmp
-set undodir=~/.vim/tmp
+Plugin 'altercation/vim-colors-solarized'  " Solarized color scheme for vim
 
-" set code folding "
-set foldmethod=indent
-set foldlevel=99
+Plugin 'scrooloose/nerdtree'  " Directory trees within vim
 
-" task lists mapping
-map <leader>td <Plug>TaskList
+Plugin 'Lokaltog/powerline', {'rtp' : 'powerline/bindings/vim'}  " upgraded status line
+Plugin 'stephenmckinney/vim-solarized-powerline'  " solarized colorscheme for powerline
 
-" gundo mapping
-map <leader>g :GundoToggle<CR>
+Plugin 'tmhedberg/SimpylFold'  " Code folding manager
 
-" pyflakes settings
-let g:pyflakes_use_quickfix = 0
 
-" python pep8 mapping
-let g:pep8_map='<leader>8'
 
-" supertab tab completion
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
-let g:SuperTabNoCompleteAfter=['^',',','\s']
+" All of your plugins must be added before the following line
+call vundle#end()
+filetype plugin indent on 
 
-" Fugitive git integration
-set statusline+=%{fugitive#statusline()}
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
-" Filetype syntax highlighting "
-syntax on
-filetype on
-filetype plugin indent on
+" Setup vim 
 
-" Solarized settings "
+syntax enable
+set number  " Turn on line numbering
+
+set history=50  " Keep 50 lines of command line history
+set ruler       " Show the cursor position all the time
+set showcmd     " Display incomplete commands
+set incsearch   " Do incremental searching
+set hlsearch    " Highlight search results?
+
+" Set vim colorscheme
 set background=dark
 colorscheme solarized
 
-set number
+" Set up colorscheme for powerline
+let g:Powerline_theme='short'
+let g:Powerline_colorscheme='solarized16_dark'
+
+" NerdTree customization
+let NerdTreeIgnore=['\.pyc$', '\~$']  " Ignore files in nerdtree
+
+" split naviation key remapping
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Turn on code folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za  " enable folding w/ spacebar
+let g:SimpylFold_docstring_preview = 1
+
+
+
+
+
