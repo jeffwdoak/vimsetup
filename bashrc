@@ -61,13 +61,3 @@ export PS1="\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]${gitbranch}\[\e${cwdcolor
 alias ls="ls --color"
 alias vi='vim'
 
-# SSH Aliases
-alias iforge='ssh -Y doak@iforge.ncsa.illinois.edu'
-
-
-# windows program aliases
-#alias sumatra='/cygdrive/c/Program\ Files\ \(x86\)/SumatraPDF/SumatraPDF.exe'
-
-# xwindows display
-export DISPLAY=:0.0
-
