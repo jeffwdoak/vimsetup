@@ -19,11 +19,12 @@ function git_branch {
   then
     gitbranch=
   fi
+  export gitbranch=$gitbranch
 }
 
 # set usercolor based on admin status
 function user_color {
-  id | grep "Admin" > /dev/null
+  id | grep "root" > /dev/null
   RETVAL=$?
   if [[ $RETVAL == 0 ]]
   then
@@ -55,8 +56,9 @@ gitcolor='[1;31m'
 user_color
 
 # PS1 set up
-PROMPT_COMMAND='settitle; git_branch;'
-export PS1="\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]${gitbranch}\[\e${cwdcolor}\][\W]\[\e${inputcolor}\] $ "
+#PROMPT_COMMAND='settitle; git_branch;'
+PROMPT_COMMAND='git_branch; git_branch;'
+export PS1="\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]\${gitbranch}\[\e${cwdcolor}\][\W]\[\e${inputcolor}\] $ "
 
 alias ls="ls --color"
 alias vi='vim'
