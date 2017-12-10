@@ -5,6 +5,7 @@
 # Script to initialize my settings on a new server.
 
 me=`whoami`
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # initialize directories
 if [ ! -e ~/src ]
@@ -21,13 +22,19 @@ git clone https://github.com/seebi/dircolors-solarized.git ~/src/dircolors-solar
 ln -s ~/src/dircolors-solarized/dircolors.256dark ~/.dircolors
 
 # setup bashrc
-cp ~/.bashrc ~/.bashrc_`date +%F`  # keep copy of old bashrc
-cp bashrc ~/.bashrc
+if [ -e ~/.bashrc ]
+then
+  cp ~/.bashrc ~/.bashrc_`date +%F`  # keep copy of old bashrc
+fi
+cp $script_dir/bashrc ~/.bashrc
 
 # setup vim
-cp -r vim ~/.vim
+if [ -e ~/.vimrc ]
+then
 cp ~/.vimrc ~/.vimrc_`date +%F`  # keep copy of old vimrc
-cp vim/vimrc ~/.vimrc
+fi
+cp -r $script_dir/vim ~/.vim
+mv ~/.vim/vimrc ~/.vimrc
 
 # install vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
