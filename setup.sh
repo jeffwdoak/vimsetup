@@ -8,6 +8,7 @@ me=`whoami`
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # initialize directories
+echo ""
 if [ ! -e ~/src ]
 then
   mkdir ~/src
@@ -37,7 +38,9 @@ cp -r $script_dir/vim ~/.vim
 mv ~/.vim/vimrc ~/.vimrc
 
 # install vundle
+echo "Installing Vundle"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 
 
