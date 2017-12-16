@@ -6,6 +6,7 @@
 #export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \W $ \[\033[00m\]"
 #export LS_COLORS=$LS_COLORS:'di=00;94'
 #eval `dircolors ~/bin/dircolors-solarized/dircolors.256dark`
+export TERM=xterm-256color
 eval `dircolors ~/.dircolors`
 
 # get current git branch name
