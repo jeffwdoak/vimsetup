@@ -16,13 +16,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'  " Solarized color scheme for vim
 
 Plugin 'scrooloose/nerdtree'  " Directory trees within vim
+Plugin 'scrooloose/syntastic'
 
 Plugin 'Lokaltog/powerline', {'rtp' : 'powerline/bindings/vim'}  " upgraded status line
 Plugin 'stephenmckinney/vim-solarized-powerline'  " solarized colorscheme for powerline
 
 Plugin 'tmhedberg/SimpylFold'  " Code folding manager
-
-
 
 " All of your plugins must be added before the following line
 call vundle#end()
@@ -58,6 +57,16 @@ let g:Powerline_colorscheme='solarized16_dark'
 
 " NerdTree customization
 let NerdTreeIgnore=['\.pyc$', '\~$']  " Ignore files in nerdtree
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " split naviation key remapping
 nnoremap <C-J> <C-W><C-J>
