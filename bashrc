@@ -64,3 +64,8 @@ export PS1="\[\e${usercolor}\][\u@\h]\[\e${gitcolor}\]\${gitbranch}\[\e${cwdcolo
 alias ls="ls --color"
 alias vi='vim'
 
+
+# run ssh-agent at startup
+eval `ssh-agent -s`
+ssh-add
+
