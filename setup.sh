@@ -4,6 +4,18 @@
 
 # Script to initialize my settings on a new server.
 
+safe_copy_file(){
+  # copy a file and create time-stamped copy if destination already exists
+  source_file=$1
+  destination_file=$2
+  timestamp=`date +%F`
+  if [ -e $destination_file ]
+  then
+    mv $destination_file $destination_file.$timestamp
+  fi
+  cp $source_file $destination_file
+}
+
 me=`whoami`
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -22,25 +34,20 @@ fi
 git clone https://github.com/seebi/dircolors-solarized.git ~/src/dircolors-solarized/
 ln -s ~/src/dircolors-solarized/dircolors.256dark ~/.dircolors
 
-# setup bashrc
-if [ -e ~/.bashrc ]
-then
-  cp ~/.bashrc ~/.bashrc_`date +%F`  # keep copy of old bashrc
-fi
-cp $script_dir/bashrc ~/.bashrc
+# setup config files
+safe_copy_file "$script_dir/bashrc" ~/.bashrc
+safe_copy_file "$script_dir/vimrc" ~/.vimrc
+safe_copy_file "$script_dir/tmux.conf" ~/.tmux.conf
 
-# setup vim
-if [ -e ~/.vimrc ]
-then
-cp ~/.vimrc ~/.vimrc_`date +%F`  # keep copy of old vimrc
-fi
 cp -r $script_dir/vim ~/.vim
-mv ~/.vim/vimrc ~/.vimrc
 
 # install vundle
 echo "Installing Vundle"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+# setup tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 
