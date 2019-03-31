@@ -24,6 +24,7 @@ Plugin 'stephenmckinney/vim-solarized-powerline'  " solarized colorscheme for po
 Plugin 'tmhedberg/SimpylFold'  " Code folding manager
 
 Plugin 'othree/html5.vim'  " html5 formatting and autocomplete
+Plugin 'christoomey/vim-tmux-navigator'
 
 " All of your plugins must be added before the following line
 call vundle#end()
