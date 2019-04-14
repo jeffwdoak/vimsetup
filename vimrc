@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Start list of plugins I want Vundle to manage
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'valloric/youcompleteme'  " autocomplete
 
 Plugin 'altercation/vim-colors-solarized'  " Solarized color scheme for vim
 
