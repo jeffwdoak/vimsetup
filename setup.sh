@@ -8,7 +8,7 @@ safe_copy_file(){
   # copy a file and create time-stamped copy if destination already exists
   source_file=$1
   destination_file=$2
-  timestamp=`date +%F`
+  timestamp=`date +%s`
   if [ -e $destination_file ]
   then
     mv $destination_file $destination_file.$timestamp
