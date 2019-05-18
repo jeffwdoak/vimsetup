@@ -11,21 +11,32 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Start list of plugins I want Vundle to manage
 
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'  " git commands in vim
+
+Plugin 'tpope/vim-dadbod'  " database plugins
+
 Plugin 'valloric/youcompleteme'  " autocomplete
 
 Plugin 'altercation/vim-colors-solarized'  " Solarized color scheme for vim
 
 Plugin 'scrooloose/nerdtree'  " Directory trees within vim
+
 Plugin 'scrooloose/syntastic'
 
-Plugin 'Lokaltog/powerline', {'rtp' : 'powerline/bindings/vim'}  " upgraded status line
+Plugin 'powerline/powerline', {'rtp' : 'powerline/bindings/vim'}  " upgraded status line
 Plugin 'stephenmckinney/vim-solarized-powerline'  " solarized colorscheme for powerline
 
 Plugin 'tmhedberg/SimpylFold'  " Code folding manager
 
 Plugin 'othree/html5.vim'  " html5 formatting and autocomplete
+
 Plugin 'christoomey/vim-tmux-navigator'
+
+Plugin 'TaskList.vim'
+
+Plugin 'latex-box-team/latex-box'
+
+Plugin 'jpalardy/vim-slime'
 
 " All of your plugins must be added before the following line
 call vundle#end()
@@ -55,9 +66,12 @@ set hlsearch    " Highlight search results?
 set background=dark
 colorscheme solarized
 
-" Set up colorscheme for powerline
+" powerline settings
 let g:Powerline_theme='short'
 let g:Powerline_colorscheme='solarized16_dark'
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " NerdTree customization
 let NerdTreeIgnore=['\.pyc$', '\~$']  " Ignore files in nerdtree
